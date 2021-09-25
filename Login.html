@@ -1,0 +1,65 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1">
+        <title>Poke Bank Login</title>
+        <meta name="description" content="An interactive getting started guide for Brackets.">
+        <link rel="stylesheet" href="css/bootstrap.min.css">  
+        <link rel="stylesheet" href="css/login.css">  
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <script type="text/javascript">
+            function validar()
+            {
+                var pin = document.getElementById("pin").value;
+                if (pin=="1234"){
+                        location.href="DavidPagina.html";
+                }
+                else if(pin=="5678"){
+                    location.href="JosePagina.html"
+                }else{
+                    swal ( "Oops" ,  "Pin no valido" ,  "error" )
+                }
+            }
+        </script>    
+    </head>
+    <body>
+        <div class="Logo">
+            <center><a href="https://fontmeme.com/pokemon-font/"><img src="https://fontmeme.com/permalink/210922/c8a4f2de53df231bddc70c5da84a329e.png" class="img-fluid" alt="Responsive image"></a></center>
+        </div>
+                    
+                
+        <div class="container">
+            <div class="row">
+            
+                    
+                        <div class="Credenciales col-sm-12 col-lg-8">
+                            <p>Bienvenido a tu PokeBank</p>
+                            <p id="Pin">Ingresar PIN</p> <input type="password" name="pin" id="pin" maxlength="4">
+
+
+                            <input type="button" name="acceder" id="acceder" value="Ingresar" onclick="validar()">
+                            <img src="img/pokeball.png" class="img-fluid" alt="Responsive image">
+                        </div>
+                    
+                
+                
+                   
+
+                        <div class="Detalles col-sm-12 col-lg-4">
+                            <p id="encabezado">¿Que puedes hacer en tu Poke Bank?</p>
+                            <br>
+                            <ul>
+                                <li>Depositar</li>
+                                <li>Retirar</li>
+                                <li>Consultar tu saldo</li>
+                                <li>Pagar tus servicios</li>
+                            </ul>
+                            
+                        </div>
+                    
+                
+            </div>    
+        </div>
+    </body>
+</html>    

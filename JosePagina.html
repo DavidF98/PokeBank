@@ -1,0 +1,257 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1">
+        <title>Poke Bank</title>
+        <meta name="description" content="An interactive getting started guide for Brackets.">
+        <link rel="stylesheet" href="css/bootstrap.min.css">  
+        <link rel="stylesheet" href="css/paginaprincipal.css"> 
+        <link rel="stylesheet" href="css/fontello.css"> 
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        
+
+    </head>
+    <body>
+        
+        <header>
+        <div class="contenedor">    
+        <div class="Logo">
+            <center><a href="#"><img src="https://fontmeme.com/permalink/210922/c8a4f2de53df231bddc70c5da84a329e.png" class="img-fluid" alt="Responsive image"></a></center>
+        
+			<input type="checkbox" id="menu-bar">
+			<label class="icon-align-justify" for="menu-bar"></label>
+			<nav class="menu">
+				<ul>
+                    <li><a href="#"><span class="icon-edit"></span>Historial</a>
+                        
+                        <div>
+                            
+                            <ul>
+                                
+                               <table id="transactionTable">
+                                   
+                                    <tr>
+                                        <th>Tipo</th>
+                                        <th>Monto</th>
+                                    </tr>
+                                    <tbody>
+
+                                    </tbody>
+                                      
+                                </table> 
+                                    
+                            </ul>    
+                        </div>    
+                        
+                    </li>
+                    <li><a href="#"><span class="icon-chart-bar"></span>Estadisticas</a>
+                    
+                        <div>
+                            <ul>
+                                <canvas id="Grafica" width="600"></canvas>
+                            </ul>    
+                        </div>    
+                        
+                    </li>
+                    <li><a href="Login.html"><span class="icon-off"></span>Salir</a></li>
+				</ul>
+			</nav>
+		</div>
+        </div>
+        
+        </header>
+        
+        
+        
+        
+        <center><h3>Jose Fernando Aguilar Contreras</h3>
+            <h4>000456</h4></center>
+        <p id="areaContador" class="d-none"></p>
+        
+        
+        <script>
+            let miCanvas = document.getElementById("Grafica").getContext("2d");
+            let cont = document.getElementById("areaContador").value;
+            var chart= new Chart(miCanvas,{
+                type:"bar",
+                data: {
+                    labels:["Deposito","Retiro","Pago Servicios"],
+                    datasets: [{
+                        label: "Grafica",
+                        backgroundColor:"rgb 0,0,0",
+                        data: [2,5,6]
+                    }]
+                }
+                
+            })
+        </script>
+        
+        
+        
+        
+        <center><div class="actual" id="saldoactual">
+        <script type="text/javascript">
+            var dispo = 350;
+            
+            document.write("Disponible " + dispo + "$");
+            </script>
+        </div> </center>   
+        <div class="container">
+            <div class="row"> 
+                <div class="accordion col-sm-12 col-lg-4 col-md-12" id="forms">
+                    <center><button type="button" class="accordion__button" id="btndeposit" value="Deposito"><span class="icon-sort-down"></span>Depositar</button>
+                    <div class="accordion__content">
+                        <p>Ingresar cantidad a depositar</p><input type="number" id="cantidad">
+                    
+                        <input type="button" name="confirmar" id="confirm" value="Confirmar" onclick="depo()">
+                        
+                        <script>
+                            let counter =0;
+                          function depo()
+                            {   
+                                
+                                add =parseInt(document.getElementById("cantidad").value)
+                                if(add == 10 || add == 25 || add == 20 || add == 50 || add == 100){
+                                    dispo = dispo + add;
+                                    document.getElementById("saldoactual").innerHTML = dispo;
+                                    
+                                    var tipo = document.getElementById("btndeposit").value;
+                                
+                                    var tr = document.createElement('tr');
+
+                                    var td1 = tr.appendChild(document.createElement('td'));
+                                    var td2 = tr.appendChild(document.createElement('td'));
+
+                                    td1.innerHTML = tipo;
+                                    td2.innerHTML = add;
+
+                                    document.getElementById("transactionTable").appendChild(tr);
+                                    document.getElementById("areaContador").innerHTML = ++counter;   
+                                                        
+                                }
+                                else{
+                                    swal ( "Oops" ,  "Cantidad no aceptada" ,  "error" )
+                                }
+                                
+                            };
+                            
+                    </script>
+                        <p>Recuerda que solo puedes depositar cantidades de: 10,20,25,50 y 100 dolares</p>
+                    </div></center>    
+                </div>    
+                <div class="accordion col-sm-12 col-lg-4 col-md-12">
+                    <center><button type="button" class="accordion__button" id="btnretiro" value="Retiro"><span class="icon-sort-down"></span>Retirar</button>
+                    <div class="accordion__content">
+                        <p>Ingresar cantidad a retirar</p><input type="number" id="ctnretirar">
+                    
+                        <input type="button" name="confirmar" id="confirm" value="Confirmar" onclick="retiro()">
+                        <script>
+                            function retiro()
+                            {   
+                                add =parseInt(document.getElementById("ctnretirar").value)
+                                if (add<=dispo){
+                                    if(add == 10 || add == 25 || add == 20 || add == 50 || add == 100){
+                                        dispo = dispo - add;
+
+                                        document.getElementById("saldoactual").innerHTML = dispo;
+                                        var tipo = document.getElementById("btnretiro").value;
+                                
+                                        var tr = document.createElement('tr');
+
+                                        var td1 = tr.appendChild(document.createElement('td'));
+                                        var td2 = tr.appendChild(document.createElement('td'));
+
+                                        td1.innerHTML = tipo;
+                                        td2.innerHTML = add;
+                                        localStorage.setItem('intento2', JSON.stringify(td1));
+                                        localStorage.setItem('intento2', JSON.stringify(td1));
+                                        document.getElementById("transactionTable").appendChild(tr);
+
+                                    }
+                                    else{
+                                        swal ( "Oops" ,  "Cantidad no aceptada" ,  "error" )
+                                    }
+                                }else{
+                                    swal ( "Oops" ,  "Cantidad no disponible en la cuenta" ,  "error" )
+                                }
+                                
+                            };
+                       
+                    </script> 
+                        <p>Recuerda que solo puedes retirar cantidades de: 10,20,25,50 y 100 dolares</p>
+                    </div></center>    
+                </div> 
+                <div class="accordion col-sm-12 col-lg-4 col-md-12">
+                    <center><button type="button" class="accordion__button" id="btnservicios" value="Servicios"><span class="icon-sort-down"></span>Pago de servicios</button>
+                    <div class="accordion__content">
+                        <p>Servicio a pagar</p>
+                        <div class="servicios">
+                        
+                            <input name="pgoserv" type="radio">Energia
+                            <br>
+                            <input name="pgoserv" type="radio">Agua
+                            <br>
+                            <input name="pgoserv" type="radio">Internet
+                            <br>
+                            <input name="pgoserv" type="radio">Gas         
+                        </div> 
+                        <br>
+                        <p>Ingresar numero de recibo</p>
+                        <input type="text">
+                        <br>
+                        <br>
+                        <p>Cantidad a pagar</p>
+                        <input type="number" id="cntdservicios">
+                        <input type="reset" name="confirmar" id="confirm" value="Confirmar" onclick="payservicios()">
+                        <script>
+                            function payservicios()
+                            {   
+                                add =parseInt(document.getElementById("cntdservicios").value)
+                                if (add<=dispo){
+                                
+                                        dispo = dispo - add;
+
+                                        document.getElementById("saldoactual").innerHTML = dispo;
+                                        var tipo = document.getElementById("btnservicios").value;
+                                
+                                        var tr = document.createElement('tr');
+
+                                        var td1 = tr.appendChild(document.createElement('td'));
+                                        var td2 = tr.appendChild(document.createElement('td'));
+
+                                        td1.innerHTML = tipo;
+                                        td2.innerHTML = add;
+
+                                        document.getElementById("transactionTable").appendChild(tr);
+                                    
+                                }else{
+                                    swal ( "Oops" ,  "Cantidad no disponible en la cuenta" ,  "error" )
+                                }
+                                
+                            };
+                       
+                    </script> 
+                    </div></center>    
+                </div> 
+            </div>
+        </div>
+ 
+        <script>
+            document.querySelectorAll('.accordion__button').forEach(button => {
+                button.addEventListener('click',() => {
+                    const accordionContent = button.nextElementSibling;
+                    
+                    button.classList.toggle('accordion__button--active');
+                    
+                    if(button.classList.contains('accordion__button--active')){
+                        accordionContent.style.maxHeight = accordionContent.scrollHeight + 'px';
+                    } else {
+                        accordionContent.style.maxHeight = 0;
+                    }
+                });
+            });
+        </script>   
+    </body>
+</html>

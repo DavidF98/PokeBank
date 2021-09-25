@@ -1,0 +1,247 @@
+*{
+	margin: 0px;
+	padding: 0px;
+	/*Cuando le demos padding sea dentro del mismo 
+	modelo de caja y no se expanda*/
+	box-sizing: border-box;
+}
+body {
+    background-color: #363B81;
+    background-image: url("img/pokegirl.png");
+}
+header{
+	width: 100%;
+	height: 150px;
+    padding-top: 10px;
+	background-color: #363B81;
+
+}
+
+
+.contenedor{
+	width: 100%
+	margin: auto;
+    
+}
+@media (min-width: 768px){
+    .contenedor{
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+}
+
+
+#menu-bar {
+	/*desaparece el check*/
+	display: none;
+
+}
+header label {
+	display: none;
+	
+	padding: 15px 5px; 
+	float: right;
+}
+header label:hover {
+	cursor: pointer;
+	background-color: #003A70; 
+}
+.menu ul{
+	margin: 0;
+	list-style: none;
+	padding: 0;
+	/* flex hace que los LI que esten dentro los 
+	haga caja flexives y los coloca en un fila*/
+	display: flex;
+	
+
+}
+
+.menu li{
+	flex-grow: 1;
+	text-align: center;
+
+}
+
+.menu li a{
+	display: block;
+	padding: 10px 20px;
+    padding-top: 5px;
+	/*quita el subrayado*/
+	text-decoration: none;
+	color: white;
+}
+.menu li:hover{
+	background: #C93646; 
+
+}
+nav > ul > li:hover div{
+    display: table;
+} 
+nav ul li div {
+    width: 30.17%;
+    position: absolute;
+    background: #FBD743;
+    box-sizing: border-box;
+    display: none;
+    
+}
+#transactionTable td{
+    text-align: center;
+    margin: 0px 5px;
+    padding: 0px 5px;
+    
+}
+#transactionTable th{
+    text-align: center;
+    margin: 0px 5px;
+    padding: 0px 5px;
+}
+.menu{
+    background-color: #FC8078;
+}
+
+/*@media funciona como un "if" a partir de 768px va a suceder 
+todo lo que este dentor de aqui*/
+@media (max-width: 768px) {
+	header label{
+		display: block;
+	}
+	.menu {
+		top: 150px;
+		position: absolute;
+		background-color: transparent; 
+		width: 100%;
+		height: 100vh;
+		margin-left: -100%;
+		transition: all 0.5s;
+
+	}
+    
+	.menu ul{
+		/*transforma las filas en columnas*/
+		flex-direction: column;
+		float: none;
+		background-color: #FC8078;
+	}
+	.menu li{
+		border-top: 1px solid white;
+	}
+	/*cuando menu-bar tenga cheke, va a buscar en el codigo 
+	hasta mostrar la clase menu*/
+	#menu-bar:checked ~ .menu{
+		margin: 0;
+
+	}
+    nav ul li div {
+        width: 80%;
+        margin-left: 10%;
+    }
+    .menu li:hover{
+	background: #C93646; 
+
+}
+}
+.depositar{
+    background-color: #6EA4BB;
+    color: #fff;
+    display: inline-block;
+    font-size: 30px;
+    margin: 20px;
+    padding: 80px 0px;
+    text-align: center;
+    width: 300px;
+    text-decoration: none;
+    box-shadow: 0px 3px 0px #373c3c;
+    
+}
+.depositar span{
+    margin-right: 5px;
+}
+.retirar{
+    background-color: #6EA4BB;
+    color: #fff;
+    display: inline-block;
+    font-size: 30px;
+    margin: 20px;
+    padding: 80px 0px;
+    text-align: center;
+    width: 300px;
+    text-decoration: none;
+    box-shadow: 0px 3px 0px #373c3c;
+}  
+.retirar span{
+    margin-right: 5px;
+}
+.pagoserv{
+    background-color: #6EA4BB;
+    color: #fff;
+    display: inline-block;
+    font-size: 30px;
+    margin: 20px;
+    padding: 80px 0px;
+    text-align: center;
+    width: 300px;
+    text-decoration: none;
+    box-shadow: 0px 3px 0px #373c3c;
+}
+.pagoserv .span{
+    margin-right: 10px;
+}
+.actual{
+    background-color: #EB804C;
+    color: #fff;
+    font-size: 30px;
+    margin: 20px;
+    padding: 30px 0px;
+    text-align: center;
+    width: 300px;
+    text-decoration: none;
+    box-shadow: 0px 3px 0px #373c3c;
+   
+}
+.accordion__button{
+    background-color: #FBD743;
+    color: #fff;
+    display: inline-block;
+    font-size: 30px;
+    margin: 20px;
+    padding: 80px 0px;
+    text-align: center;
+    width: 300px;
+    text-decoration: none;
+    box-shadow: 0px 3px 0px #373c3c;
+}
+.accordion__content{
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.2s;
+    
+    padding: 0px 15px;
+    font-family: sans-serif;
+    background-color: #363B81;
+    width: 300px;
+    color: white;
+    font-size: 15;
+}
+.servicios{
+    align-content:center;
+}
+.servicios input{
+    float: left;
+}
+.tabledise tr{
+    padding: 12px 12px;
+}
+.tabledise th{
+    padding: 12px 12px;
+}
+.tabledise td{
+    padding: 12px 12px;
+}
+#areaContador {
+    font-size: 40px;
+    font-weight: bold;
+    font-family: impact;
+    margin: 10px;
+}

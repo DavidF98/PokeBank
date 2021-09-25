@@ -1,0 +1,59 @@
+body {
+    background-color: #363B81;
+}
+.Logo {
+    background-color: #363B81;
+    padding: 30px;
+    
+    
+    
+}
+.Logo img{
+    margin: 10px;
+    
+}
+.Credenciales{
+    text-align: center;
+    border: 3px #000 solid;
+    height: 350px;
+    background-color: #FFCD00;
+    
+    
+}
+.Credenciales p{
+    font-size: 50;
+}
+.Credenciales input{
+    margin: 5px;
+}
+.Credenciales #Pin{
+    font-size: 15;
+}
+.Credenciales img{
+    width: 100px;
+    height: 100px;
+    margin-left: 50px;
+}
+
+
+.Detalles{
+    text-align: center;
+    border: 3px #000 solid;
+    background-color: #FFCD00;
+    
+    
+    
+}
+.Detalles #encabezado{
+    font-size: 30;
+}
+.Detalles li{
+    font-size: 25;
+    
+}
+.Detalles img{
+    width: 100px;
+    height: 100px;
+    
+    
+}
